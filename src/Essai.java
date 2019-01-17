@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/*
 public class Essai {
 	public static void main(String [] args) {
 			Scanner my_scanner;
@@ -10,3 +10,4 @@ public class Essai {
 			System.out.println("Vous avez saisi la ligne:"+ligne);
 	}
 }
+*/
