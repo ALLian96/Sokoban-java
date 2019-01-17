@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.*;
 
 
@@ -9,10 +7,9 @@ public class LecteurNiveaux {
 			FileReader fr = null;
 			BufferedReader br = null;
 			try {
-				fr = new FileReader("H:\\java\\Sokoban-java\\src\\Original.txt");
+				fr = new FileReader("src/Original.txt");
 				br  = new BufferedReader(fr);
 				String s  = "";
-				StringBuffer str = new StringBuffer();
 				boolean stop = false;
 				while((s=br.readLine())!=null && stop == false ) {
 					
@@ -27,8 +24,8 @@ public class LecteurNiveaux {
 如：
 "hamburger".substring(4, 8) returns "urge"
  "smiles".substring(1, 5) returns "mile"
-取长度大于等于3的字符串a的后三个子字符串，只需a.subString(a.length()-3, a.length());
-						 */
+取长度大于等于3的字符串a的后三个子字符串，只需a.subString(a.length()-3, a.length());*/
+						 
 						stop = true;
 					}
 					System.out.println(s);
@@ -46,9 +43,21 @@ public class LecteurNiveaux {
 					ex.printStackTrace();
 				}
 			}
-		
-	    }
+			//methode 2
+			try {
+				  System.out.println("another method");
+	            InputStream is = new FileInputStream("src/Original.txt");
+	            int size = is.available();
+	            	
+	            for (int i = 0; i < size; i++) {
+	                System.out.print((char) is.read());
+	            }
+	            is.close();
+	        } catch (IOException e) {
+	            System.out.print("Exception");
+			}
 		
 			
+}
 }
 
