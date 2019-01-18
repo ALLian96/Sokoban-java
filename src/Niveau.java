@@ -2,20 +2,11 @@ import java.util.Scanner;
 
 public class Niveau {
 	
-	int[][] monTableau = new int [42][42];
+	int[][] monTableau;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		public Niveau(){
+		 monTableau = new int [42][42];
+		}
 	
 	
 	
