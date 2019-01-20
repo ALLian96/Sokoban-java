@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -8,27 +7,34 @@ public class LecteurNiveaux {
 
 
 	public static Niveau lisProchainNiveau(InputStream is){
-		Niveau n;
+		Niveau n;		
 		n = new Niveau();
+        String[] subS = new String[40];
+
+        int i = 0;
 		try {
-		  System.out.println("another method");
-          is = new FileInputStream("src/Original.txt");
           BufferedReader br = new BufferedReader(new InputStreamReader(is));
-          String str = null;
-          while(true) {
-        	  str = br.readLine();
-        	  if(str != null) {
+          String str = null;   
+          boolean stop = false;
+          while(stop != true) {
+        	  str = br.readLine();        	  
+        	  if(str != null) {		  
         		  System.out.println(str);
+        		  if(str.charAt(0)==';') { 
+        			  stop = true;        			  
+        		  }
+        		  else {
+        			  subS[i] = str;
+        			  n.monTableau[i]= stringToAscii(str);
+        		}        		
         	  }
-        	  else 
-        		  break;
+        	  i++;        	 
           }
-          is.close();
-        
-      } catch (Exception e) {
+          is.close();        
+       } catch (Exception e) {
          e.printStackTrace();
-		}
-		 return null;
+	  }
+		 return n;
 	
 		
 	
@@ -74,5 +80,14 @@ public class LecteurNiveaux {
 		}*/
 			
 }
+	public static int[] stringToAscii(String str){			   
+			char[] chars=str.toCharArray();
+		    int[] t = new int[chars.length];
+		    for(int i=0;i<chars.length;i++){
+		         t[i] = (int)chars[i];
+		       
+		    }
+		    return t;
+		        
+	}
 }
-

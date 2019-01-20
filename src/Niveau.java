@@ -35,14 +35,11 @@ public class Niveau {
 		}
 		
 		int lignes() {
-			return 0;
-			
+			return monTableau.length;					
 		}
 		
-		int colonnes() {
-			return 0;
-			
-			
+		int colonnes() {		
+			return  monTableau[0].length;			
 		}
 		
 		String nom() {
