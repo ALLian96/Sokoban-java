@@ -1,4 +1,4 @@
-// Etape1
+-------------------------------------------
 µ±Ò»¸ö±äÁ¿Ç°ÃæÓÐÁËstaticÕâ¸öÐÞÊÎ·û£¬
 ÄÚ´æ»áÎªËü·ÖÅäÎ¨Ò»µÄÒ»¿é´æ´¢¿Õ¼ä¡£³ÌÐòÅÜÆðÀ´µÄÊ±ºò£¬
 ±äÁ¿¾Í´æÔÚÔÚÄÚ´æÀïÁË¡£Ë­ÒªÓÃËü£¬¾ÍÈ¥·ÃÎÊÒ»ÏÂËüËùÔÚµÄÄÚ´æ¡£
@@ -11,7 +11,6 @@
 ×÷Õß£ºÕÅÎ¨¼Ñ
 Á´½Ó£ºhttps://www.zhihu.com/question/23168955/answer/28422467
 À´Ô´£ºÖªºõ
-
 
 
 parseInt() ·½·¨ÓÃÓÚ½«×Ö·û´®²ÎÊý×÷ÎªÓÐ·ûºÅµÄÊ®½øÖÆÕûÊý½øÐÐ½âÎö¡£
@@ -30,7 +29,7 @@ BufferedReader read()·½·¨¶ÁÈ¡×Ö·ûÊ±»áÒ»´Î¶ÁÈ¡Èô¸É×Ö·ûµ½»º³åÇø£¬È»ºóÖð¸ö·µ»Ø¸ø³ÌÐ
 BufferedWriter write()·½·¨Ð´³ö×Ö·ûÊ±»áÏÈÐ´µ½»º³åÇø£¬»º³åÇøÐ´ÂúÊ±²Å»áÐ´µ½ÎÄ¼þ£¬½µµÍÐ´ÎÄ¼þµÄ´ÎÊý£¬Ìá¸ßÐ§ÂÊ
 
 
-//Etape2
+---------------------------------
 ¹¹Ôì·½·¨Ö±½ÓÔÚnewµÄÊ±ºò¾Íµ÷ÓÃÁË£¬²»ÐèÒªÔÙÖØÐÂµ÷ÓÃ¡£±ØÐëÏÂÃæµÄÀý×ÓÕâÀï²»ÓÃÔÙ p.Person£¨£©
 ¼ÙÉèÎÒÃÇ´´½¨ÁËÒ»¸öclass Person{
 	private String name;
@@ -61,3 +60,69 @@ p.show();
 		this.age = age;
 		System.out.println("ÓÐ²ÎÊýµÄ¹¹Ôì");
 	}
+¹¹Ôì·½·¨ÆäÊµ¾ÍÊÇ³õÊ¼»¯£¬ÎÒÃÇ¿ÉÒÔ²»ÓÃ´ø²ÎÊýµÄ¹¹Ôì·½·¨£¬È»ºóºóÃæ¿ÉÒÔÓÃset·½·¨½øÐÐ¸Ä±ä£¬setXXX¸üÁé»î
+
+----------------------------
+this¹Ø¼ü×Ö×î´óµÄ×÷ÓÃ¾ÍÊÇÈÃÀàÖÐµÄÒ»¸ö·½·¨£¬·ÃÎÊ¸ÃÀàÖÐÁíÒ»¸ö·½·¨»òÊµÀý±äÁ¿¡£
+thisÔÚ¹¹ÔìÆ÷ÖÐ´ú±í¸Ã¹¹ÔìÆ÷ÕýÔÚ³õÊ¼»¯µÄ¶ÔÏó¡£
+
+public class Dog
+{
+    public void jump(){
+        system.out.println("ÕýÔÚÖ´ÐÐjump£¨£©·½·¨");
+    }
+
+    public void run(){
+        //this ÒýÓÃµ÷ÓÃrun£¨£©·½·¨ÖÐµÄ¶ÔÏó
+        //this´ú±írun£¨£©¶ÔÏó
+        this.jump();
+    }
+}
+
+-----------------------------
+´´½¨¶ÔÏóµÄ¹ý³ÌÄÚ´æÔõÃ´×öµÄ¡£¿É¼ûÍ¼´´½¨¶ÔÏó.jpg
+ Student s = new Student()
+1.Student.class ¼ÓÔØ½øÄÚ´æ
+2.ÉùÃ÷Ò»¸öStudentÀàÐÍÒýÓÃ
+3.ÔÚ¶ÑÄÚ´æÖÐ´´½¨¶ÔÏó
+4.¸ø¶ÔÏóÊôÐÔÄ¬ÈÏ³õÊ¼»¯Öµ£¨±ÈÈçStringÊÇnull intÊÇ0£©
+5.ÊôÐÔ½øÐÐÏÔÊ¾³õÊ¼»¯£¨±ÈÈçÎÒÃÇÔÚStudentÀïÃæ¶¨ÒåµÄÊÇ String name = 'ÕÅÈý'£¬ÄÇÃ´null¾Í³õÊ¼»¯ÎªÕÅÈý£©
+6.¹¹Ôì·½·¨½øÕ»£¬¶Ô¶ÔÏóÖÐµÄÊôÐÔ¸³Öµ£¨this.name=XXX£©£¬¸³ÖµÍêºó£¬¹¹Ôì·½·¨ÍêÊÂÁË³öÕ»
+7.½«¶ÔÏóµÄµØÖ·Öµ¸³Öµs
+
+
+
+-----------------------------
+StaticµÄ×÷ÓÃ ¼û¾²Ì¬static.jpg
+ÌØµã£º
+a.Ëæ×ÅÀàµÄ¼ÓÔØ¶ø¼ÓÔØ
+b.ÓÅÏÈÓÚ¶ÔÏó´æÔÚ ÒâË¼ÊÇÏÖÔÚÀà.classÀïÃæ¼ÓÔØ¾²Ì¬Çø£¬È»ºó²ÅÈ¥´´½¨¶ÔÏó
+c.±»ÀàµÄËùÓÐ¶ÔÏó¹²Ïí
+	*¾ÙÀý£ºÒ»¸ö°àµÄÑ§Éú¹²ÓÃÍ¬Ò»¸ö°à¼¶±àºÅ
+	Ò²¾ÍÊÇËµÈç¹ûÄ³¸ö³ÉÔ±±äÁ¿ÊÇ±»ËùÓÐ¶ÔÏó¹²ÏíµÄ£¬ÄÇÃ´Ëü¾ÍÓ¦¸Ã¶¨ÒåÎª¾²Ì¬µÄ
+	±ÈÈç£ºÒûË®»ú£¨¾²Ì¬ÐÞÊÎ)
+		  Ë®±­£¨²»ÄÜÓÃ¾²Ì¬ÐÞÊÎ£©
+¿ÉÒÔÓÃÀàÃû.¾²Ì¬±äÁ¿ ½øÐÐ¸³Öµ
+Ò²¿ÉÒÔÓÃ¶ÔÏó.¾²Ì¬±äÁ¿ ½øÐÐ¸³Öµ
+µ«ÊÇ·Ç¾²Ì¬²»ÄÜÓÃÀàÃû.±äÁ¿
+
+
+
+-----------------------------
+ÕûÊýÀàÐÍ£ºbyte£¬short£¬int£¬longÄ¬ÈÏ³õÊ¼»¯Öµ¶¼ÊÇ0
+¸¡µãÀàÐÍ:float, double Ä¬ÈÏ³õÊ¼»¯Öµ¶¼ÊÇ0.0
+²¼¶ûÀàÐÍ£ºbooleanÊÇfalse
+×Ö·ûÀàÐÍ£ºchar Ä¬ÈÏ³õÊ¼»¯ÖµÊÇ'\u0000' ·´Ð±¸Ü´ú±í×ªÒÆ×Ö·û uÊÇunicode£¨javaÊÇunicode±àÂë£©
+          charÔÚÄÚ´æÖÐÕ¼Á½¸ö×Ö½Ú£¬ÊÇ16¸ö¶þ½øÖÆÎ»
+          \u0000£¬Ã¿Ò»¸ö0ÆäÊµ´ú±íµÄÊÇ16½øÖÆµÄ0£¬ÄÇÃ´ËÄ¸ö0¾ÍÊÇ´ú±í16¸ö¶þ½øÖÆÎ»
+          
+          
+          
+----------------------------
+A£ºÕ» pile
+´æ´¢¾Ö²¿±äÁ¿
+¾Ö²¿±äÁ¿£º¶¨ÒåÔÚ·½·¨ÉùÃ÷ÉÏºÍ·½·¨ÖÐµÄ±äÁ¿
+
+B£º¶Ñ tas
+´æ´¢new³öÀ´µÄÊý×é»ò¶ÔÏó
+
