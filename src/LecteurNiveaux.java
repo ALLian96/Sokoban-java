@@ -9,7 +9,6 @@ public class LecteurNiveaux {
 	public static Niveau lisProchainNiveau(InputStream is){
 		Niveau n;		
 		n = new Niveau();
-        String[] subS = new String[40];
 
         int i = 0;
 		try {
@@ -17,19 +16,23 @@ public class LecteurNiveaux {
           String str = null;   
           boolean stop = false;
           while(stop != true) {
-        	  str = br.readLine();        	  
+        	  str = br.readLine();      
+        	  n.colonne = Integer.max(str.length(), n.colonne);
+        	 //	 System.out.print("colonne" + n.colonne);
         	  if(str != null) {		  
         		  System.out.println(str);
         		  if(str.charAt(0)==';') { 
         			  stop = true;        			  
         		  }
-        		  else {
-        			  subS[i] = str;
-        			  n.monTableau[i]= stringToAscii(str);
-        		}        		
+        		  else {        			 
+        			  n.monTableau[i]= str.toCharArray();
+        			  i++; 
+        		  }
+        		 
         	  }
-        	  i++;        	 
+        	        	 
           }
+          n.ligne = i;
           is.close();        
        } catch (Exception e) {
          e.printStackTrace();

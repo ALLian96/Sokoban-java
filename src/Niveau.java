@@ -1,72 +1,80 @@
 import java.util.Scanner;
 
+
 public class Niveau {
 	
-	int[][] monTableau;
+	char[][] monTableau;
+	int ligne,colonne=0;
+	String nom;
 	
 		public Niveau(){
-		 monTableau = new int [42][42];
+			monTableau = new char [42][42];
 		}
-	
-	
-	
 		
 		void fixeNom(String s) {
-			
+			nom = s;			
 		}
 		
 		void videCase(int i,int j) {
-			
+			monTableau[i][j] = 0;
 		}
 		
 		void ajouteMur(int i,int j) {
-			
+			monTableau[i][j] = 35;
 		}
 		void ajoutePousseur(int i, int j) {
-			
+			if(monTableau[i][j] == 46) {
+				monTableau[i][j]= 43;
+			}
+			else {
+				monTableau[i][j]= 64;
+			}
 		}
 		
 		void ajouteCaisse(int i,int j) {
-			
+			if(monTableau[i][j] == 46) {
+				monTableau[i][j]= 42;
+			}
+			else {
+				monTableau[i][j]= 36;
+			}
 		}
 		
 		void ajouteBut(int i,int j) {
-			
+			monTableau[i][j]= 46;
 		}
 		
 		int lignes() {
-			return monTableau.length;					
+			return ligne;			
 		}
 		
 		int colonnes() {		
-			return  monTableau[0].length;			
+			return this.colonne;	
 		}
 		
 		String nom() {
-			return null;
-			
+			return this.nom;
 		}
 		
 		boolean estVide(int l, int c) {
-			return false;
+			return (monTableau[l][c]== 0);
 			
 		}
 		
 		boolean aMur(int l,int c) {
-			return false;
+			return (monTableau[l][c]== 35);
 			
 		}
 		
 		boolean aBut(int l,int c) {
-			return false;
+			return (monTableau[l][c]== 46);
 			
 		}
 		boolean aPousseur(int l,int c) {
-			return false;
+			return ((monTableau[l][c]== 43) ||(monTableau[l][c]== 64));
 			
 		}
 		boolean aCaisse(int l,int c) {
-			return false;
-			
+			return ((monTableau[l][c]== 42) ||(monTableau[l][c]== 36));		
 		}
 }
