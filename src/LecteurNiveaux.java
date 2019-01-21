@@ -1,18 +1,19 @@
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class LecteurNiveaux {
-
-
 	public static Niveau lisProchainNiveau(InputStream is){
 		Niveau n;		
 		n = new Niveau();
 
         int i = 0;
 		try {
-          BufferedReader br = new BufferedReader(new InputStreamReader(is));
+       InputStreamReader isr = new InputStreamReader(is);  //将字节流转化成字符流，并指定字符集
+       BufferedReader br = new BufferedReader(isr);//将字符流以缓存的形式一行一行输出
           String str = null;   
           boolean stop = false;
           while(stop != true) {
@@ -83,6 +84,10 @@ public class LecteurNiveaux {
 		}*/
 			
 }
+	public static Niveau lisProchainNiveau2(InputStream is){
+		return null;
+		
+	}
 	public static int[] stringToAscii(String str){			   
 			char[] chars=str.toCharArray();
 		    int[] t = new int[chars.length];

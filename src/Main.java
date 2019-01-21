@@ -11,7 +11,7 @@ public class Main {
 		OutputStream os;
 		try {
 			Niveau n;		
-			is = new FileInputStream("src/Original.txt");
+			is = new FileInputStream("src/Original.txt");  //得到字节流
 			os = new FileOutputStream("src/test.txt");
 			LecteurNiveaux ln = null;
 			n = ln.lisProchainNiveau(is);

@@ -1,4 +1,4 @@
-
+// Etape1
 当一个变量前面有了static这个修饰符，
 内存会为它分配唯一的一块存储空间。程序跑起来的时候，
 变量就存在在内存里了。谁要用它，就去访问一下它所在的内存。
@@ -17,3 +17,47 @@
 parseInt() 方法用于将字符串参数作为有符号的十进制整数进行解析。
 
 如果方法有两个参数， 使用第二个参数指定的基数，将字符串参数解析为有符号的整数。
+
+
+InputStream ： 是所有字节输入流的超类，一般使用它的子类：FileInputStream等，它能输出字节流；
+InputStreamReader ： 是字节流与字符流之间的桥梁，能将字节流输出为字符流，并且能为字节流指定字符集，可输出一个个的字符；
+BufferedReader ： 提供通用的缓冲方式文本读取，readLine读取一个文本行， 从字符输入流中读取文本，缓冲各个字符，从而提供字符、数组和行的高效读取。
+
+BufferedReader 的 readLine()方法读取字符时会一次读取一行字符（不包括换行符号）
+BufferedWriter 的 newLine（）方法可以输出一个跨平台的换行符号 “\r\n”
+
+BufferedReader read()方法读取字符时会一次读取若干字符到缓冲区，然后逐个返回给程序，降低读取文件的次数，提高效率
+BufferedWriter write()方法写出字符时会先写到缓冲区，缓冲区写满时才会写到文件，降低写文件的次数，提高效率
+
+
+//Etape2
+构造方法直接在new的时候就调用了，不需要再重新调用。必须下面的例子这里不用再 p.Person（）
+假设我们创建了一个class Person{
+	private String name;
+	private int age;
+	
+	public Person(){
+	
+	//构造方法
+	name = "张三";
+	age = 23;
+	}
+	
+	public void show(){
+		System.out.println(name + "...." + age);
+	}
+}
+然后主程序里我创建对象
+Person p = new Person();
+p.show();
+那么如果我再次创建对象，问题来了，我又写一次
+Person p = new Person();
+p.show();
+但是这里新创建的对象还是张三。所以这么写构造方法不好，就最好用带参数的构造方法来初始化对象。
+
+
+	public Person(String name, int age){
+		this.name = name;
+		this.age = age;
+		System.out.println("有参数的构造");
+	}
