@@ -30,7 +30,7 @@ BufferedWriter write()方法写出字符时会先写到缓冲区，缓冲区写满时才会写到文件，降
 
 
 ---------------------------------
-构造方法直接在new的时候就调用了，不需要再重新调用。必须下面的例子这里不用再 p.Person（）
+构造方法直接在new的时候就调用了，不需要再重新调用。比如下面的例子这里不用再 p.Person（）
 假设我们创建了一个class Person{
 	private String name;
 	private int age;
