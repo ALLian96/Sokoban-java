@@ -1,83 +1,70 @@
 package etape2;
 
-public class SequenceListe implements NodeInterface {
-	int size;    //taille de Liste chainee
-	Node head;   //tete
-	
-	public SequenceListe() {
-		size = 0;
-		head = null;
-	}
-	
-	private class Node {
-		private int data;
-		private Node next;
-		
-		public Node(int data) {
-			this.data = data;
-		}
-	}
-		
+public class SequenceListe implements Sequence {
+	Maillon tete,queue;
+
+	@Override	
 	public void insereTete(int element) {
-			Node newHead = new Node(element);
-			if(size == 0) {
-				head = newHead;
-			}
-			else {
-				newHead.next = head;
-				head = newHead;
-			}
-			size++;
-	}
-		
-	public void insereQueue(int element) {
-			Node newQueue = new Node(element);
-			Node temp = head;
-			if(size == 0) {
-				head = newQueue;
-			}
-			else {
-				while(temp.next!=null) {
-					temp = temp.next;
-				}
-				temp.next = newQueue;
-			}
-			size++;
+			Maillon m = new Maillon(element,tete);
+			if(queue == null)
+				queue = m;
+			tete = m;
 	}
 	
-	public int extraitTete() throws Exception {
+	@Override
+	public void insereQueue(int element) {
+			Maillon m = new Maillon(element,null);
+			if(queue == null) {
+				queue = tete = m;
+			}
+				
+			else {
+				queue.suivant = m;
+				queue = m;
+			}
+		
+	}
+	
+	public int extraitTete(){
 			int valTete;
-			if(size == 0) {
+			if(tete == null) {
 				throw new RuntimeException("S¨¦quence vide");
 			}
 			else {
-				valTete = head.data;
-				
-				head = head.next;
-				System.out.println("valTete :"+ head.data);
-				size--;
+				valTete = tete.element;
+				tete = tete.suivant;
+				if(tete == null) {
+					queue = null;
+				}
 				return valTete;
 			}
 	}
 		
 	public boolean estVide() {
-		return (size == 0);
+		return (tete == null);
 			
 	}
 	
 	public String toString() {
-		String str = "tete";
-		if(this.head == null) {
-			str = "";
+		String resultat = "SequenceListe [ ";
+		boolean premier = true;
+		Maillon m = tete;
+		if(m == null) {
+			resultat = "vide";
 		}
 		else{
-			Node currentNode = this.head;
-			while(currentNode!=null) {
-				str = str+ "->" + Integer.toString(currentNode.data);
-				currentNode = currentNode.next;
+			while(m != null) {
+				if(!premier) {
+					resultat += ", ";
+				}
+				resultat += m.element;
+				m = m.suivant;
+				premier = false;
 			}
+			resultat += "]";
+
 		}
-		return str;		
+		return resultat;	
 	}
 
 }
