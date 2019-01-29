@@ -44,6 +44,7 @@ public class SequenceTableau implements Sequence{
 			redimensionne(taille * 2);
 		}
 		elements[(debut+taille)%elements.length] = element;
+		System.out.println("yige shu: "+(debut+taille)%elements.length);
 		taille++;
 	}
 

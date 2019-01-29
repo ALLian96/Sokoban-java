@@ -2,13 +2,44 @@ import java.util.Scanner;
 
 
 public class Niveau {
-	
-	char[][] monTableau;
-	int ligne,colonne=0;
+	static final int VIDE = 0;
+	static final int MUR = 1;
+	static final int POUSSEUR = 2;
+	static final int CAISSE = 4;
+	static final int BUT = 8;
+	int l,c;	
+	int[][] monTableau;
 	String nom;
 	
 		public Niveau(){
-			monTableau = new char [42][42];
+			monTableau = new int [1][1];
+			l = c = 1;
+		}
+		
+		int ajuste(int cap,int objectif) {
+			while(cap <= objectif) {
+				cap = cap * 2;
+			}
+			return cap;
+		}
+		
+		void redimensionne(int nouvL,int nouvC) {
+			int capL = ajuste(monTableau.length,nouvL);
+			int capC = ajuste(monTableau[0].length,nouvC);
+			if((capL > monTableau.length) || (capC > monTableau[0].length)) {
+				int[][] nouvelles = new int [capL][capC];
+				for (int i = 0; i < monTableau.length; i++)
+					for (int j = 0; j < monTableau[0].length; j++)
+						nouvelles[i][j] = monTableau[i][j];
+				monTableau = nouvelles;
+
+			}
+			if(nouvL >= l) {
+				l = nouvL + 1;
+			}
+			if(nouvC >= c) {
+				c = nouvC + 1;
+			}
 		}
 		
 		void fixeNom(String s) {
@@ -16,65 +47,61 @@ public class Niveau {
 		}
 		
 		void videCase(int i,int j) {
-			monTableau[i][j] = 0;
+			redimensionne(i,j);
+			monTableau[i][j] = VIDE;
+		}
+		
+		void ajoute(int contenu,int i ,int j) {
+			redimensionne(i,j);
+			monTableau[i][j] |= contenu;
 		}
 		
 		void ajouteMur(int i,int j) {
-			monTableau[i][j] = 35;
+			ajoute(MUR,i,j);
 		}
 		void ajoutePousseur(int i, int j) {
-			if(monTableau[i][j] == 46) {
-				monTableau[i][j]= 43;
-			}
-			else {
-				monTableau[i][j]= 64;
-			}
+			ajoute(POUSSEUR, i, j);
 		}
 		
 		void ajouteCaisse(int i,int j) {
-			if(monTableau[i][j] == 46) {
-				monTableau[i][j]= 42;
-			}
-			else {
-				monTableau[i][j]= 36;
-			}
+			ajoute(CAISSE, i, j);
 		}
 		
 		void ajouteBut(int i,int j) {
-			monTableau[i][j]= 46;
+			ajoute(BUT, i, j);
 		}
 		
 		int lignes() {
-			return ligne;			
+			return l;			
 		}
 		
 		int colonnes() {		
-			return this.colonne;	
+			return c;	
 		}
 		
 		String nom() {
-			return this.nom;
+			return nom;
 		}
 		
 		boolean estVide(int l, int c) {
-			return (monTableau[l][c]== 0);
+			return monTableau[l][c] == VIDE;
 			
 		}
 		
 		boolean aMur(int l,int c) {
-			return (monTableau[l][c]== 35);
+			return (monTableau[l][c] & MUR ) != 0;
 			
 		}
 		
 		boolean aBut(int l,int c) {
-			return (monTableau[l][c]== 46);
+			return (monTableau[l][c] & BUT) != 0;
 			
 		}
 		boolean aPousseur(int l,int c) {
-			return ((monTableau[l][c]== 43) ||(monTableau[l][c]== 64));
+			return (monTableau[l][c] & POUSSEUR) != 0;
 			
 		}
 		boolean aCaisse(int l,int c) {
-			return ((monTableau[l][c]== 42) ||(monTableau[l][c]== 36));		
+			return (monTableau[l][c] & CAISSE) != 0;
 		}
 }
