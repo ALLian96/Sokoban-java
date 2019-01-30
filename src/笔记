@@ -126,3 +126,90 @@ A：栈 pile
 B：堆 tas
 存储new出来的数组或对象
 
+
+-----------------------------
+关于多态
+比如我们有一个父类Father 一个他的子类Son
+public class Father{
+	int num = 10;
+}
+
+class Son extends Father{
+	int num = 20;
+}
+
+Father f = new Son();
+f.print()
+System......(f.num)出来的结果是什么呢？
+是10
+原因是因为我们在子类里面有两个num
+一个num=10 是在super里面看到的父类的
+一个num=20 是son自己的。 而我们这里父类只能看到super不能看到son的 所以会显示20
+
+成员变量
+编译看左边（父类），运行看左边（父类）
+
+成员方法
+编译看左边（父类），运行看右边（子类）
+
+
+f.print()打印的是son类下的print因为
+编译的时候看的是父类里面有没有这个方法，但是执行的时候是看子类有没有。
+这个就叫动态绑定
+但是如果这个方法定义为了静态，那还是会看父类的
+
+多态的好处是：
+提高了代码的维护性（继承保证）
+提高了代码的扩展性 （由多态保证）
+弊端：
+不能使用子类的特有属性和行为
+
+Animal a
+a instanceof Cat 判断前面的引用是否是后面的数据类型
+
+
+
+----------------------------Apnne3
+先是学习了fabrique 用一个Interface
+Sequence nouvelle();
+但是没有实例化。
+再用两个class 实现这个interface
+里面有其具体的方法
+	public Sequence nouvelle() {
+		return new SequenceListe();
+	}
+然后我们就能用这样的方式来创建我们想要的东西，而不用每次都分开。
+	test(new FabriqueSequenceListe())
+	比如这儿我要创建Liste的Sequence 我就声明一个新的这个类的对象
+	test(FabriqueSequence s)
+		
+		Sequence s1
+		s1 = s.nouvelle();
+		
+后面学的是singleton pattern模式
+意图：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+
+主要解决：一个全局使用的类频繁地创建与销毁。
+
+何时使用：当您想控制实例数目，节省系统资源的时候。
+如何解决：判断系统是否已经有这个单例，如果有则返回，如果没有则创建。
+
+Logger properties
+
+一个Configuration类
+构造方法
+private Configuration() {
+先加载配置文件default.cfg
+后面再用logger做一些打印处理
+最后根据我们获取的属性 来进行不同的处理，比如是声明一个新的tableau 还是一个新的Liste
+}
+	
+		private static Configuration instance = null;
+		public static Configuration instance() {
+			if(instance == null) {
+				instance  = new Configuration();
+			}
+			return instance;
+	}
+	这样就能保证你只会有一个实例
+	

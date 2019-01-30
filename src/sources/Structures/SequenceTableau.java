@@ -1,5 +1,4 @@
-package etape2;
-
+package sources.Structures;
 public class SequenceTableau implements Sequence{
 	int[] elements;
 	int taille,debut;
@@ -44,7 +43,7 @@ public class SequenceTableau implements Sequence{
 			redimensionne(taille * 2);
 		}
 		elements[(debut+taille)%elements.length] = element;
-		System.out.println("yige shu: "+(debut+taille)%elements.length);
+		System.out.println("index : "+(debut+taille)%elements.length);
 		taille++;
 	}
 

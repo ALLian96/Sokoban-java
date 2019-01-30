@@ -1,5 +1,7 @@
-package etape2;
+package sources.Structures;
+
 import java.util.Random;
+import java.util.Scanner;
 
 public class TestSequence {
 	static int min,max,count;
@@ -38,7 +40,7 @@ public class TestSequence {
 	}
 	
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		Random r = new Random();
 		SequenceListe s1 = new SequenceListe();
 		SequenceTableau s2 = new SequenceTableau();
@@ -67,5 +69,29 @@ public class TestSequence {
 			}
 			assert (r1 == r2);
 		}
+	}*/
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		switch(Integer.parseInt(s.substring(0,1))) {
+		case 0: test(new FabriqueSequenceListe());break;
+		case 1: test(new FabriqueSequenceTableau());break;
+		case 2: test(new FabriqueSequenceListe());
+		test(new FabriqueSequenceTableau());break;
+		}
+	}
+	
+	public static void test(FabriqueSequence s) {
+		
+		Sequence s1,s2;
+		s1 = s.nouvelle();
+		s1.insereQueue(10);
+		s1.insereQueue(5);
+		s2 = s.nouvelle();
+		while(!s1.estVide()) {
+			s2.insereQueue(s1.extraitTete());
+			System.out.println(s2.extraitTete());
+		}
+		
 	}
 }

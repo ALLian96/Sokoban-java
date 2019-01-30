@@ -1,4 +1,4 @@
-package etape2;
+package sources.Structures;
 
 public class SequenceListe implements Sequence {
 	Maillon tete,queue;

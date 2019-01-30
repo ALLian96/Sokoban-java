@@ -1,3 +1,4 @@
+package sources;
 import java.io.InputStream;
 
 public class Sokoban {
@@ -7,7 +8,8 @@ public class Sokoban {
 		// La m¨¦thode de chargement suivante ne d¨¦pend pas du syst¨¨me de fichier et sera
 		// donc utilisable pour un .jar
 		// Attention, par contre, le fichier doit se trouver dans le CLASSPATH
-		in = ClassLoader.getSystemClassLoader().getResourceAsStream("Original2.txt");
+		in = ClassLoader.getSystemClassLoader().getResourceAsStream("resources/Original.txt");
+	
 		if (in == null) {
 			System.err.println("ERREUR : impossible de trouver le fichier de niveaux");
 			System.exit(1);

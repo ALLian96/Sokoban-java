@@ -1,4 +1,5 @@
-package etape2;
+package sources.Structures;
+
 
 public class Maillon {
 	int element;

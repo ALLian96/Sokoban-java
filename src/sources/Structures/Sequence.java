@@ -1,4 +1,5 @@
-package etape2;
+package sources.Structures;
+
 
 public interface Sequence {
 		void insereTete(int element);
