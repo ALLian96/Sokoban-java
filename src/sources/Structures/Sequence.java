@@ -1,11 +1,12 @@
 package sources.Structures;
 
 
-public interface Sequence {
-		void insereTete(int element);
+public interface Sequence<E> {
+		void insereTete(E element);
 		
-		void insereQueue(int element);
-		int extraitTete() ;
+		void insereQueue(E element);
+		E extraitTete() ;
 		boolean estVide();
+		Iterateur iterateur();
 
 }

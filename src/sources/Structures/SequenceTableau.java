@@ -1,17 +1,17 @@
 package sources.Structures;
-public class SequenceTableau implements Sequence{
-	int[] elements;
+public class SequenceTableau<E> implements Sequence<E>{
+	Object[] elements;
 	int taille,debut;
 	
 	public SequenceTableau() {
-			elements = new int[1];
+			elements = new Object[1];
 			debut = 0;
 			taille = 0;
 	}
-	private void redimensionne(int nouvelleCapacite){
-		int[] nouveau;
+	void redimensionne(int nouvelleCapacite){
+		Object[] nouveau;
 		if(nouvelleCapacite > elements.length) {
-			nouveau = new int[nouvelleCapacite];
+			nouveau = new Object[nouvelleCapacite];
 			int aCopier = taille;
 			for (int i = 0;i < aCopier; i++) {
 				nouveau[i] = extraitTete();
@@ -22,7 +22,7 @@ public class SequenceTableau implements Sequence{
 		}
 	}
 	@Override
-	public void insereTete(int element) {
+	public void insereTete(E element) {
 		// TODO Auto-generated method stub
 		if (taille == elements.length)
 			redimensionne(taille * 2);
@@ -37,7 +37,7 @@ public class SequenceTableau implements Sequence{
 	}
 
 	@Override
-	public void insereQueue(int element) {
+	public void insereQueue(E element) {
 		// TODO Auto-generated method stub
 		if(taille == elements.length) {
 			redimensionne(taille * 2);
@@ -48,9 +48,11 @@ public class SequenceTableau implements Sequence{
 	}
 
 	@Override
-	public int extraitTete() {
-		// TODO Auto-generated method stub
-		int resultat = elements[debut];
+	public E extraitTete() {
+		// Resultat invalide si la sequence est vide
+				@SuppressWarnings("unchecked")
+
+		E resultat = (E)elements[debut];
 		debut = (debut + 1) % elements.length;
 		taille--;
 		return resultat;
@@ -75,6 +77,10 @@ public class SequenceTableau implements Sequence{
 		}
 		resultat +="]";
 		return resultat;
+	}
+	@Override
+	public Iterateur<E> iterateur() {
+		return new IterateurSequenceTableau<>(this);
 	}
 
 

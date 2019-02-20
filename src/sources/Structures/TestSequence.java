@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TestSequence {
 	static int min,max,count;
 	
-	static int operation(Sequence seq,int code) throws Exception {
+	static int operation(Sequence<Integer> seq,int code) throws Exception {
 		int s;
 		System.out.println(seq);
 		switch(code) {

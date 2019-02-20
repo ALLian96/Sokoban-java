@@ -1,19 +1,19 @@
 package sources.Structures;
 
-public class SequenceListe implements Sequence {
-	Maillon tete,queue;
+public class SequenceListe<E> implements Sequence<E> {
+	Maillon<E> tete,queue;
 
 	@Override	
-	public void insereTete(int element) {
-			Maillon m = new Maillon(element,tete);
+	public void insereTete(E element) {
+			Maillon<E> m = new Maillon<>(element,tete);
 			if(queue == null)
 				queue = m;
 			tete = m;
 	}
 	
 	@Override
-	public void insereQueue(int element) {
-			Maillon m = new Maillon(element,null);
+	public void insereQueue(E element) {
+			Maillon<E> m = new Maillon<E>(element,null);
 			if(queue == null) {
 				queue = tete = m;
 			}
@@ -25,8 +25,8 @@ public class SequenceListe implements Sequence {
 		
 	}
 	
-	public int extraitTete(){
-			int valTete;
+	public E extraitTete(){
+			E valTete;
 			if(tete == null) {
 				throw new RuntimeException("S¨¦quence vide");
 			}
@@ -48,7 +48,7 @@ public class SequenceListe implements Sequence {
 	public String toString() {
 		String resultat = "SequenceListe [ ";
 		boolean premier = true;
-		Maillon m = tete;
+		Maillon<E> m = tete;
 		if(m == null) {
 			resultat = "vide";
 		}
@@ -65,6 +65,10 @@ public class SequenceListe implements Sequence {
 
 		}
 		return resultat;	
+	}
+	@Override
+	public Iterateur<E> iterateur() {
+		return new IterateurSequenceListe<>(this);
 	}
 
 }
